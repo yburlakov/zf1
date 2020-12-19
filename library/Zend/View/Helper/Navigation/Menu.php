@@ -45,6 +45,13 @@ class Zend_View_Helper_Navigation_Menu
     protected $_ulClass = 'navigation';
 
     /**
+     * CSS class to use for the child ul element
+     *
+     * @var string
+     */
+    protected $_ulChildClass = '';
+
+    /**
      * Unique identifier (id) for the ul element
      *
      * @var string
@@ -157,6 +164,32 @@ class Zend_View_Helper_Navigation_Menu
     public function getUlClass()
     {
         return $this->_ulClass;
+    }
+
+
+    /**
+     * Sets CSS class to use for the sub 'ul' elements when rendering
+     *
+     * @param  string $ulClass                   CSS class to set
+     * @return Zend_View_Helper_Navigation_Menu  fluent interface, returns self
+     */
+    public function setUlChildClass($ulClass)
+    {
+        if (is_string($ulClass)) {
+            $this->_ulChildClass = $ulClass;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns CSS class to use for the sub 'ul' elements when rendering
+     *
+     * @return string  CSS class
+     */
+    public function getUlChildClass()
+    {
+        return $this->_ulChildClass;
     }
 
     /**
@@ -809,6 +842,10 @@ class Zend_View_Helper_Navigation_Menu
                     $attribs = array(
                         'class' => $ulClass,
                         'id'    => $ulId,
+                    );
+                } else {
+                    $attribs = array(
+                        'class' => $this->getUlChildClass(),
                     );
                 }
 
