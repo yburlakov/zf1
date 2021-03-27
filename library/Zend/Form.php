@@ -2616,7 +2616,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         }
 
         $customMessages = $this->_getErrorMessages();
-        if ($this->isErrors() && !empty($customMessages)) {
+        if ($this->hasErrors() && !empty($customMessages)) {
             return $customMessages;
         }
 
