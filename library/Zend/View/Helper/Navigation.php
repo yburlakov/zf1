@@ -344,6 +344,10 @@ class Zend_View_Helper_Navigation
      */
     public function render(Zend_Navigation_Container $container = null)
     {
+        if (null === $container) {
+            $container = $this->getContainer();
+        }
+
         $helper = $this->findHelper($this->getDefaultProxy());
         return $helper->render($container);
     }
